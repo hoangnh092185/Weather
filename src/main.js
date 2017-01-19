@@ -14,36 +14,24 @@ export default class main extends Component {
     super();
   }
   render(){
-    const { region } = this.props;
-    console.log(region);
+    // const { region } = this.props;
+    // console.log(region);
 
     return (
-      <View style ={styles.container}>
         <MapView
-          style={styles.map}
-          region={{
-            latitude: 37.78825,
-         longitude: -122.4324,
-         latitudeDelta: 11.0,
-         longitudeDelta: 11.0,
-          }}
-        >
+          onRegionChangeComplete={this.onRegionChangeComplete}
+          style={styles.map}>
         </MapView>
-      </View>
     );
+  }
+  onRegionChangeComplete(region){
+    console.log(region);
   }
 }
 const styles = StyleSheet.create({
- container: {
-   ...StyleSheet.absoluteFillObject,
-   height: 400,
-   width: 400,
-   justifyContent: 'flex-end',
-   alignItems: 'center',
- },
  map: {
-   ...StyleSheet.absoluteFillObject,
- },
+   flex: 1
+ }
 });
 
 AppRegistry.registerComponent('weather', () => Main);
